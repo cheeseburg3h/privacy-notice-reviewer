@@ -19,7 +19,8 @@ def test_context_detects_sector_and_adds_sector_terms() -> None:
     adapted = adapt_controls_for_company(controls, context)
     transfer = next(control for control in adapted if control["control_id"] == "PNR-020")
     assert "hotel luar negeri" in transfer["keywords"]
-    assert "hotel booking" in transfer["keywords"]
+    role_clarity = next(control for control in adapted if control["control_id"] == "PNR-001")
+    assert "hotel booking" in role_clarity["keywords"]
 
 
 def test_profile_control_alias_can_rename_company_aspect() -> None:

@@ -30,7 +30,7 @@ def write_jsonl(path: str | Path, rows: Iterable[dict[str, Any]]) -> None:
 
 
 def read_json(path: str | Path) -> dict[str, Any]:
-    with Path(path).open("r", encoding="utf-8") as handle:
+    with Path(path).open("r", encoding="utf-8-sig") as handle:
         return json.load(handle)
 
 
@@ -39,4 +39,3 @@ def write_json(path: str | Path, payload: Any) -> None:
     with output.open("w", encoding="utf-8", newline="\n") as handle:
         json.dump(payload, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
-

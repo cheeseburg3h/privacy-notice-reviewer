@@ -32,6 +32,22 @@ def _is_noise_for_control(control_id: str, chunk: dict[str, Any]) -> bool:
     text = f"{chunk.get('heading', '')} {chunk.get('text', '')}".lower()
     if text.strip().startswith("from <"):
         return True
+    if len(text) < 140 and any(
+        marker in text
+        for marker in (
+            "privacy notice",
+            "kebijakan privasi",
+            "anda berada di",
+            "for individual",
+            "for business",
+            "login untuk",
+            "back ",
+            "search indonesia",
+            "kantor cabang",
+            "pusat bantuan",
+        )
+    ):
+        return True
     if control_id == "PNR-010":
         notice_update_terms = ("memperbarui kebijakan privasi", "pembaruan pemberitahuan privasi", "update to this privacy")
         data_update_terms = ("memperbarui data", "pembaruan data", "memperbaiki data", "koreksi data", "correct your data")

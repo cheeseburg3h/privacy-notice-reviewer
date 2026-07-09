@@ -151,7 +151,7 @@ def infer_company_context(company: str, notice_chunks: list[dict[str, Any]], pro
             detected_sectors.append(sector)
 
     profile_sector = profile.get("sector")
-    sectors = _unique(([str(profile_sector)] if profile_sector else []) + detected_sectors)
+    sectors = _unique([str(profile_sector)] if profile_sector else detected_sectors)
     brands = _unique([*profile.get("company_aliases", []), *profile.get("brands", []), company])
     services = _unique(profile.get("services", []))
     user_roles = _unique(profile.get("user_roles", []))
@@ -182,18 +182,19 @@ def infer_company_context(company: str, notice_chunks: list[dict[str, Any]], pro
 def adapt_controls_for_company(controls: list[dict[str, str]], context: dict[str, Any]) -> list[dict[str, str]]:
     adapted = deepcopy(controls)
     sectors = context.get("sectors", [])
-    common_terms = _unique(
-        [
-            *context.get("company_aliases", []),
-            *context.get("services", []),
-            *context.get("user_roles", []),
-            *context.get("notice_title_aliases", []),
-        ]
-    )
+    company_terms = _unique([*context.get("company_aliases", []), *context.get("notice_title_aliases", [])])
+    service_terms = _unique(context.get("services", []))
+    role_terms = _unique(context.get("user_roles", []))
+    scoped_common_terms = {
+        "PNR-001": _unique(company_terms + service_terms),
+        "PNR-002": role_terms,
+        "PNR-004": role_terms,
+        "PNR-018": _unique(company_terms + service_terms),
+    }
 
     for control in adapted:
         control_id = control["control_id"]
-        additions = _unique([*CONTROL_ALIASES.get(control_id, []), *common_terms])
+        additions = _unique([*CONTROL_ALIASES.get(control_id, []), *scoped_common_terms.get(control_id, [])])
         for sector in sectors:
             pack = SECTOR_PACKS.get(sector)
             if pack:
