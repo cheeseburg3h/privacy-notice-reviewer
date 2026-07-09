@@ -1,0 +1,27 @@
+# Python runtime artifacts
+__pycache__/
+.pytest_cache/
+*.py[cod]
+
+# Local environments and secrets
+.venv/
+venv/
+.env
+
+# Confidential or generated review data
+data/client_inputs/**
+data/processed/**
+outputs/**
+research/**
+security-audit/**
+tools/**
+
+# Uploaded source documents and generated report binaries stay local by default.
+*.pdf
+*.docx
+*.xlsx
+*.jsonl
+
+# Keep curated legal metadata and the control matrix in source control.
+!data/legal_sources/uu_pdp_27_2022/legal_control_matrix_uu_pdp.csv
+!data/legal_sources/uu_pdp_27_2022/legal_source_manifest.json

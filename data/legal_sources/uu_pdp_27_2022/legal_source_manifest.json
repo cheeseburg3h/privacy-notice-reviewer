@@ -1,0 +1,13 @@
+{
+  "law": "UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi",
+  "jurisdiction": "Indonesia",
+  "effective_date": "2022-10-17",
+  "primary_source_file": "UU_No_27_Tahun_2022_PDP_official.pdf",
+  "control_matrix": "legal_control_matrix_uu_pdp.csv",
+  "segmentation": "article-level",
+  "notes": [
+    "Local PDF supplied by user and treated as the primary legal source for MVP retrieval.",
+    "Paragraph-level ayat/huruf segmentation is a planned enhancement."
+  ]
+}
+

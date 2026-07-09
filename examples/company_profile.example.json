@@ -1,0 +1,33 @@
+{
+  "profile_source": "reviewer supplied",
+  "external_research_allowed": false,
+  "sector": "ecommerce",
+  "company_aliases": ["Example Group", "Example App"],
+  "brands": ["ExamplePay", "ExampleMall"],
+  "services": ["marketplace", "loyalty program", "same-day delivery"],
+  "user_roles": ["buyer", "seller", "merchant", "courier"],
+  "notice_title_aliases": ["Kebijakan Privasi", "Data Protection Notice"],
+  "research_focus": [
+    "payment and logistics vendors",
+    "seller/buyer role split",
+    "cross-border cloud processing"
+  ],
+  "control_aliases": {
+    "PNR-004": {
+      "aspect_label": "Customer privacy request workflow",
+      "keywords": ["help center", "privacy request form", "account deletion"]
+    },
+    "PNR-018": {
+      "aspect_label": "Marketplace partners and service providers",
+      "keywords": ["seller", "merchant", "logistics partner", "payment gateway"]
+    },
+    "PNR-020": {
+      "aspect_label": "International data hosting and transfer",
+      "keywords": ["cloud region", "outside Indonesia", "international partner"]
+    }
+  },
+  "notes": [
+    "Use stable UU PDP controls for reporting, but retrieve evidence using product and role names used by this company."
+  ]
+}
+
